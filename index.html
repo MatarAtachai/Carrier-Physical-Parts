@@ -62,17 +62,14 @@
         </div>
         <h1 class="text-2xl font-bold text-carrier-900 tracking-tight">Carrier Parts Drive</h1>
         <p class="text-xs text-slate-500">ระบบเข้าสู่ระบบบันทึกภาพอะไหล่แอร์ Carrier ลง Google Drive</p>
-        <span class="inline-block text-[11px] bg-carrier-50 text-carrier-700 font-medium px-3 py-1 rounded-full border border-carrier-200">
-          ดึงข้อมูลรหัสอะไหล่ & สิทธิ์ช่างจาก Google Sheet
-        </span>
       </div>
 
       <!-- Login Form -->
       <form id="loginForm" onsubmit="handleLoginSubmit(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1.5">รหัสช่าง / ชื่อผู้ใช้งาน (Username หรือ Employee ID)</label>
+          <label class="block text-xs font-semibold text-slate-700 mb-1.5">Username</label>
           <div class="relative">
-            <input type="text" id="loginUsername" required placeholder="เช่น tech01 หรือ 10082" autocomplete="username"
+            <input type="text" id="loginUsername" required placeholder="Username" autocomplete="username"
               class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-carrier-500 focus:bg-white font-medium transition-all pl-10">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
@@ -91,36 +88,12 @@
           </div>
         </div>
 
-        <!-- Quick Demo Account Fill -->
-        <div class="pt-1">
-          <div class="text-[11px] text-slate-500 flex items-center justify-between mb-1">
-            <span>บัญชีทดสอบด่วน:</span>
-            <span class="text-carrier-600 font-semibold cursor-pointer hover:underline" onclick="fillDemoLogin('tech01', '1234')">ช่างสมชาย (tech01)</span>
-            <span class="text-carrier-600 font-semibold cursor-pointer hover:underline" onclick="fillDemoLogin('tech02', '1234')">ช่างวิชัย (tech02)</span>
-          </div>
-        </div>
-
         <button type="submit" id="loginSubmitBtn"
           class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-carrier-600 to-carrier-700 hover:from-carrier-700 hover:to-carrier-800 text-white font-bold text-sm shadow-md shadow-carrier-700/30 active:scale-[0.98] transition-all flex items-center justify-center space-x-2">
           <span id="loginBtnText">เข้าสู่ระบบ (Sign In)</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </button>
       </form>
-
-      <!-- Apps Script Connection Notice -->
-      <div class="border-t border-slate-100 pt-3 text-center">
-        <button onclick="toggleScriptModal(true)" class="text-xs text-carrier-600 hover:text-carrier-800 font-medium underline">
-          ⚙️ ดูวิธีตั้งค่า Google Sheet & Apps Script
-        </button>
-      </div>
-      
-      <!-- GitHub Pages API Connection Bar -->
-      <div id="githubApiNotice" class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600 flex items-center justify-between">
-        <span class="truncate">🔗 เชื่อมต่อ Google Apps Script API:</span>
-        <button type="button" onclick="promptForApiUrl()" class="text-carrier-600 hover:text-carrier-800 font-semibold underline shrink-0 ml-1">
-          <span id="apiStatusText">ตั้งค่า Web App URL</span>
-        </button>
-      </div>
     </div>
   </div>
 
@@ -144,9 +117,6 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center space-x-1.5">
-        <button onclick="toggleScriptModal(true)" class="p-2 rounded-xl bg-white border border-slate-200 text-carrier-700 hover:bg-slate-50 shadow-xs" title="ตั้งค่า Sheet & Drive">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-        </button>
         <button onclick="handleLogout()" class="p-2 rounded-xl bg-white border border-slate-200 text-rose-600 hover:bg-rose-50 shadow-xs" title="ออกจากระบบ">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
         </button>
@@ -156,12 +126,12 @@
     <!-- Google Sheet Sync Status Bar -->
     <div class="mb-3 px-3 py-2 bg-carrier-50 border border-carrier-200 rounded-2xl flex items-center justify-between text-xs text-carrier-900 shadow-xs">
       <div class="flex items-center space-x-2 truncate">
-        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span id="sheetCountBadge" class="font-medium truncate">ฐานข้อมูลอะไหล่ Carrier: 20,450 รายการ</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span id="sheetCountBadge" class="font-medium truncate">กำลังโหลดข้อมูลอะไหล่จากชีต...</span>
       </div>
-      <button onclick="syncPartsFromGoogleSheet()" class="text-carrier-600 hover:text-carrier-800 font-semibold underline text-[11px] shrink-0 ml-2 flex items-center space-x-1">
+      <button onclick="syncPartsFromGoogleSheet(true)" class="text-carrier-600 hover:text-carrier-800 font-semibold underline text-[11px] shrink-0 ml-2 flex items-center space-x-1">
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-        <span>ซิงก์ Sheet</span>
+        <span>ซิงก์ใหม่</span>
       </button>
     </div>
 
@@ -202,6 +172,20 @@
         <div id="partDropdownList" class="hidden absolute left-0 right-0 top-[76px] z-30 bg-white border border-slate-200 rounded-2xl shadow-2xl max-h-56 overflow-y-auto divide-y divide-slate-100">
           <!-- Injected dynamically via JS -->
         </div>
+
+        <!-- Selected Part Information Card (Column A + Column C) -->
+        <div id="selectedPartDetailsCard" class="hidden p-3 bg-carrier-50/80 border border-carrier-200 rounded-2xl mt-2 flex items-start space-x-2.5 transition-all">
+          <div class="p-2 rounded-xl bg-carrier-600 text-white shrink-0 mt-0.5 shadow-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-mono font-bold text-carrier-900" id="cardPartCodeDisplay">-</span>
+              <span class="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.2 rounded-full">ยืนยันรหัส</span>
+            </div>
+            <p class="text-xs font-medium text-slate-700 leading-snug mt-0.5 truncate" id="cardPartNameDisplay">ชื่ออะไหล่จะแสดงที่นี่</p>
+          </div>
+        </div>
       </section>
 
       <!-- STEP 2: Camera or File Select with Strict Extension Check -->
@@ -236,13 +220,6 @@
             <input type="file" id="galleryInput" accept="image/jpeg,image/png,image/jpg" class="hidden" onchange="handleFileSelect(event)">
           </label>
         </div>
-
-        <!-- Quick Demo image loader button for desktop previewing -->
-        <div class="text-center pt-1">
-          <button type="button" onclick="loadCarrierDemoImage()" class="text-xs text-carrier-600 hover:text-carrier-800 underline font-medium">
-            ⚡ หรือคลิกทดลองด้วยภาพอะไหล่จำลอง (Demo Part Image)
-          </button>
-        </div>
       </section>
 
       <!-- STEP 3: Preview & Strict File Validation Box -->
@@ -272,6 +249,11 @@
           <div class="flex justify-between items-center pb-1.5 border-b border-carrier-200">
             <span class="font-bold text-carrier-900">ชื่อไฟล์ที่จะบันทึกบน Google Drive:</span>
             <span id="targetStrictFilename" class="font-mono text-sm text-carrier-700 font-bold bg-white px-2.5 py-0.5 rounded-lg border border-carrier-300">43T00933.jpg</span>
+          </div>
+
+          <div class="flex justify-between items-center text-slate-600">
+            <span>ชื่ออะไหล่ (จาก Column C):</span>
+            <span id="targetPartNameReview" class="font-semibold text-carrier-900 truncate max-w-[200px]">มอเตอร์พัดลมกรงกระรอก</span>
           </div>
           
           <div class="flex justify-between items-center text-slate-600">
@@ -313,77 +295,26 @@
 
     </div>
 
-    <!-- History Section -->
+    <!-- History Section: Pulling Real Logs from Google Sheet -->
     <section class="mt-5">
       <div class="flex items-center justify-between mb-2.5 px-1">
         <h2 class="text-xs font-bold uppercase tracking-wider text-carrier-900 flex items-center space-x-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-carrier-500"></span>
-          <span>ประวัติอะไหล่ที่อัปโหลดล่าสุด</span>
+          <span>ประวัติการบันทึก (จาก Google Sheet Logs)</span>
         </h2>
-        <button onclick="clearHistoryLog()" class="text-xs text-slate-400 hover:text-carrier-600">ล้างประวัติ</button>
+        <button onclick="fetchLogsFromGoogleSheet()" class="text-xs text-carrier-600 hover:text-carrier-800 font-semibold flex items-center space-x-1 underline">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          <span>รีเฟรชประวัติ</span>
+        </button>
       </div>
       <div id="uploadHistoryList" class="space-y-2">
         <div id="emptyHistoryNotice" class="text-center py-6 px-4 bg-white/70 border border-dashed border-slate-300 rounded-2xl">
-          <p class="text-xs text-slate-400">ยังไม่มีรายการที่อัปโหลดในรอบนี้</p>
+          <p class="text-xs text-slate-400">กำลังโหลดประวัติจาก Google Sheet...</p>
         </div>
       </div>
     </section>
 
   </main>
-
-  <!-- ==================== MODAL: GOOGLE SCRIPT & SHEETS SETUP GUIDE ==================== -->
-  <div id="scriptModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl space-y-4 max-h-[90vh] flex flex-col">
-      <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-        <h3 class="font-bold text-carrier-900 text-base flex items-center space-x-2">
-          <span class="p-1.5 rounded-xl bg-carrier-100 text-carrier-700">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-          </span>
-          <span>การเชื่อมต่อ Google Sheets & Apps Script</span>
-        </h3>
-        <button onclick="toggleScriptModal(false)" class="p-1 rounded-full text-slate-400 hover:text-slate-600">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-
-      <div class="overflow-y-auto space-y-3.5 text-xs text-slate-600 pr-1">
-        <div class="p-3 bg-carrier-50 border border-carrier-200 rounded-xl space-y-1.5">
-          <p class="font-bold text-carrier-900">📊 โครงสร้าง Google Sheet ที่ต้องเตรียม (3 แท็บ):</p>
-          <ul class="list-disc list-inside space-y-1 text-slate-700 pl-1">
-            <li><strong>แท็บ "Users":</strong> คอลัมน์ A: <code>username</code>, คอลัมน์ B: <code>password</code>, คอลัมน์ C: <code>name</code> (สำหรับช่าง Login)</li>
-            <li><strong>แท็บ "Parts":</strong> คอลัมน์ A: <code>part_number</code> (ใส่รหัสอะไหล่ลงมาเรื่อยๆ ได้มากกว่า 20,000 รายการ)</li>
-            <li><strong>แท็บ "Logs":</strong> คอลัมน์ A: <code>วันเวลา</code>, คอลัมน์ B: <code>รายชื่อดรอปลิส</code>, คอลัมน์ C: <code>คนที่บันทึก</code></li>
-          </ul>
-        </div>
-
-        <div class="p-3 bg-carrier-50/70 border border-carrier-300 rounded-xl space-y-1">
-          <label class="block font-bold text-carrier-900">🌐 Web App URL จาก Google Apps Script (สำหรับรันบน GitHub Pages):</label>
-          <input type="url" id="configGasApiUrl" placeholder="https://script.google.com/macros/s/AKfycb.../exec"
-            class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono focus:ring-2 focus:ring-carrier-500 focus:outline-none">
-          <p class="text-[10px] text-slate-500">ได้จากการกด Deploy > New deployment > Web app ใน Google Apps Script</p>
-        </div>
-
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">Google Drive Folder ID (สำหรับจัดเก็บรูป):</label>
-          <input type="text" id="configDriveFolderId" placeholder="เช่น 1aBcDeFgHiJkLmNoPqRsTuVwXyZ..."
-            class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono focus:ring-2 focus:ring-carrier-500 focus:outline-none">
-        </div>
-
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center">
-            <span class="font-bold text-slate-700">โค้ด Google Apps Script (Code.gs):</span>
-            <button onclick="copyAppsScriptCode()" class="text-carrier-600 hover:text-carrier-800 font-semibold underline text-[11px]">คัดลอกโค้ด</button>
-          </div>
-          <pre id="appsScriptCodeBlock" class="p-3 bg-slate-900 text-slate-200 rounded-xl font-mono text-[11px] overflow-x-auto max-h-48 border border-slate-800 select-all leading-relaxed"></pre>
-        </div>
-      </div>
-
-      <div class="flex space-x-2 pt-2 border-t border-slate-100">
-        <button onclick="saveDriveConfigSettings()" class="flex-1 py-2.5 bg-carrier-600 hover:bg-carrier-700 text-white font-bold rounded-xl text-xs shadow-md shadow-carrier-600/20">บันทึกการตั้งค่า</button>
-        <button onclick="toggleScriptModal(false)" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-xl text-xs">ปิด</button>
-      </div>
-    </div>
-  </div>
 
   <!-- Toast Notification -->
   <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 max-w-[90%] w-80 bg-slate-900/90 backdrop-blur-md text-white px-4 py-3 rounded-2xl shadow-xl z-50 flex items-center space-x-3 pointer-events-none opacity-0 transition-opacity duration-300">
@@ -396,6 +327,9 @@
   <!-- ==================== LOGIC & SCRIPTS ==================== -->
   <script>
     // Current Session & Uploader State
+    const DEFAULT_GAS_API_URL = "https://script.google.com/macros/s/AKfycbxyEVJerS38PO7TrUeJg4tF2fr7Y5bu1fQT8-byNWLp_jy6aLJagt5HJ_JarQ0rsbXkMA/exec";
+    const DEFAULT_DRIVE_FOLDER_ID = "1Zs4ct-PwmKQX_CIxfG8k-AQL9HqvjEV4";
+
     let currentUser = null;
     let selectedPartNumber = '';
     let selectedPartDescription = '';
@@ -405,15 +339,8 @@
     let isUploading = false;
     let uploadHistory = [];
 
-    // In-memory 20,000+ Carrier Spare Parts Data Store
+    // In-memory Carrier Spare Parts Data Store
     let allPartsDatabase = [];
-
-    // Pre-seed User Database (Simulating Google Sheet 'Users' Tab)
-    const mockUsersSheet = [
-      { username: 'tech01', password: '123', name: 'ช่างสมชาย (Carrier Team A)' },
-      { username: 'tech02', password: '123', name: 'ช่างวิชัย (Carrier Team B)' },
-      { username: 'admin', password: 'admin', name: 'หัวหน้าคลังอะไหล่ (Warehouse Admin)' }
-    ];
 
     // Helper: Call Backend whether running on Apps Script or GitHub Pages via Fetch
     async function callBackend(action, payload = {}) {
@@ -430,6 +357,11 @@
               .withSuccessHandler(resolve)
               .withFailureHandler(reject)
               .getPartsFromSheet();
+          } else if (action === 'getLogs') {
+            google.script.run
+              .withSuccessHandler(resolve)
+              .withFailureHandler(reject)
+              .getLogsFromSheet();
           } else if (action === 'upload') {
             google.script.run
               .withSuccessHandler(resolve)
@@ -440,84 +372,35 @@
       }
 
       // 2. If running on GitHub Pages using deployed Apps Script Web App URL
-      const apiUrl = localStorage.getItem('carrier_gas_api_url') || '';
+      const apiUrl = DEFAULT_GAS_API_URL;
       if (apiUrl) {
         try {
           const res = await fetch(apiUrl, {
             method: 'POST',
+            mode: 'cors',
+            redirect: 'follow',
             body: JSON.stringify({ action: action, ...payload })
           });
-          return await res.json();
+          
+          if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: ไม่สามารถเรียก API ได้`);
+          }
+          
+          const json = await res.json();
+          return json;
         } catch (fetchErr) {
-          throw new Error('ไม่สามารถเชื่อมต่อ API ได้: ' + fetchErr.message);
+          console.error("API Call Error:", fetchErr);
+          throw new Error(fetchErr.message || 'เชื่อมต่อ API ล้มเหลว');
         }
       }
 
-      // 3. Fallback mock simulation for demo
       return null;
-    }
-
-    function promptForApiUrl() {
-      const currentUrl = localStorage.getItem('carrier_gas_api_url') || '';
-      const input = prompt('https://script.google.com/macros/s/AKfycbzl4LF-NZFku3tL_N26nvL0yufX3PATMKTYztwIqQHBnyA7VPstodTIbb3pdbFYzzDEPw/exec', currentUrl);
-      if (input !== null) {
-        localStorage.setItem('carrier_gas_api_url', input.trim());
-        updateApiStatusIndicator();
-        showToast('บันทึก Web App URL เรียบร้อย', 'success');
-      }
-    }
-
-    function updateApiStatusIndicator() {
-      const url = localStorage.getItem('carrier_gas_api_url');
-      const elem = document.getElementById('apiStatusText');
-      if (elem) {
-        elem.innerText = url ? '✓ เชื่อมต่อ URL แล้ว (คลิกแก้ไข)' : '⚠️ ยังไม่ตั้งค่า URL (คลิก)';
-        elem.className = url ? 'text-emerald-600 font-semibold' : 'text-amber-600 font-semibold';
-      }
-    }
-
-    function initializePartsDatabase() {
-      // 1. Mandatory items specified by user:
-      const priorityParts = [
-        { code: '43T00933', desc: 'มอเตอร์พัดลมกรงกระรอก คอยล์เย็น Carrier' },
-        { code: '43T09646', desc: 'แผงวงจรอินเวอร์เตอร์ Outdoor PCB Inverter' },
-        { code: '43T80368', desc: 'คอมเพรสเซอร์โรตารี่ Inverter Rotary Compressor' },
-        { code: '43T60421', desc: 'มอเตอร์พัดลม คอยล์ร้อน ODU Fan Motor' },
-        { code: '43T21390', desc: 'แผงคอนเดนเซอร์ทองแดง Copper Condenser' },
-        { code: '43T50112', desc: 'เอ็กซ์แพนชั่นวาล์วไฟฟ้า EEV Expansion Valve' },
-        { code: '43T71944', desc: 'ป้ายเนมเพลท Serial Plate & QR Code' },
-        { code: '43T33210', desc: 'เซนเซอร์อุณหภูมิท่อทองแดง Pipe Sensor' },
-        { code: '43T98412', desc: 'รีโมทคอนโทรลไร้สาย Carrier Wireless Remote' }
-      ];
-
-      allPartsDatabase = [...priorityParts];
-
-      // 2. Synthesize up to 20,500 realistic Carrier Air Part Numbers for high-load demonstration
-      // Using standard Carrier part prefix structure (43Txxxxx, 11xxxxx, 22xxxxx)
-      const partTypes = ['PCB Board', 'Fan Motor', 'Coil', 'Sensor', 'Valve', 'Capacitor', 'Bracket', 'Filter'];
-      for (let i = 1; i <= 20450; i++) {
-        const paddedNum = String(i).padStart(5, '0');
-        const code = `43T${paddedNum}`;
-        // Skip if already in priority
-        if (code === '43T00933' || code === '43T09646' || code === '43T80368') continue;
-        allPartsDatabase.push({
-          code: code,
-          desc: `อะไหล่ Carrier ${partTypes[i % partTypes.length]} รหัส ${code}`
-        });
-      }
-
-      const countBadge = document.getElementById('sheetCountBadge');
-      if (countBadge) {
-        countBadge.innerText = `ฐานข้อมูลอะไหล่ Carrier: ${allPartsDatabase.length.toLocaleString()} รายการ`;
-      }
     }
 
     // Page Load Init
     window.addEventListener('DOMContentLoaded', () => {
-      initializePartsDatabase();
-      loadStoredSettings();
-      renderScriptCodeTemplate();
-      updateApiStatusIndicator();
+      // ดึงรายการอะไหล่ทันทีตั้งแต่เปิดหน้าเว็บ
+      syncPartsFromGoogleSheet(false);
       checkExistingSession();
     });
 
@@ -550,15 +433,8 @@
         document.getElementById('uploaderSignDisplay').innerText = currentUser.name;
       }
 
-      // Default select the first requested part
-      selectPartItem('43T00933', 'มอเตอร์พัดลมกรงกระรอก คอยล์เย็น Carrier');
-      renderHistoryList();
-    }
-
-    function fillDemoLogin(username, password) {
-      document.getElementById('loginUsername').value = username;
-      document.getElementById('loginPassword').value = password;
-      document.getElementById('loginForm').dispatchEvent(new Event('submit', { cancelable: true }));
+      // ดึงประวัติจริงจาก Google Sheet
+      fetchLogsFromGoogleSheet();
     }
 
     function handleLoginSubmit(event) {
@@ -580,26 +456,18 @@
             localStorage.setItem('carrier_logged_user', JSON.stringify(currentUser));
             showToast('เข้าสู่ระบบสำเร็จ ยินดีต้อนรับ ' + currentUser.name, 'success');
             showAppView();
-            syncPartsFromGoogleSheet(); // Auto sync real parts after login
+            syncPartsFromGoogleSheet(true); // โหลดอะไหล่ซ้ำเพื่อให้แน่ใจว่าเป็นข้อมูลล่าสุด
           } else if (res && !res.success) {
-            showToast('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง (กรุณาตรวจใน Sheet)', 'error');
+            showToast(res.error || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', 'error');
           } else {
-            // Offline/Simulation fallback
-            const match = mockUsersSheet.find(user => user.username.toLowerCase() === u.toLowerCase() && user.password === p);
-            if (match) {
-              currentUser = { username: match.username, name: match.name };
-              localStorage.setItem('carrier_logged_user', JSON.stringify(currentUser));
-              showToast('เข้าสู่ระบบสำเร็จ (โหมดจำลอง) ' + match.name, 'success');
-              showAppView();
-            } else {
-              showToast('รหัสผ่านไม่ถูกต้อง (หรือยังไม่ได้ใส่ Web App URL)', 'error');
-            }
+            showToast('ไม่สามารถตรวจสอบข้อมูลได้ ตรวจสอบสิทธิ์ Apps Script', 'error');
           }
         })
         .catch((err) => {
           btn.disabled = false;
           text.innerText = 'เข้าสู่ระบบ (Sign In)';
-          showToast('เชื่อมต่อ Sheet ล้มเหลว: ' + err.message, 'error');
+          console.error(err);
+          showToast('เชื่อมต่อ API ล้มเหลว: ตรวจสอบการตั้งค่าสิทธิ์ Apps Script', 'error');
         });
     }
 
@@ -630,45 +498,66 @@
       const dropdown = document.getElementById('partDropdownList');
       dropdown.classList.remove('hidden');
 
-      // Efficient filtering: limit to top 40 results to prevent UI sluggishness
+      if (!allPartsDatabase || allPartsDatabase.length === 0) {
+        dropdown.innerHTML = `
+          <div class="p-4 text-center text-xs text-carrier-700">
+            <svg class="w-5 h-5 animate-spin mx-auto mb-2 text-carrier-600" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+            กำลังดึงข้อมูลอะไหล่จาก Google Sheet...
+          </div>
+        `;
+        return;
+      }
+
+      // ฟิลเตอร์ค้นหาทั้งรหัสและชื่ออะไหล่
       let matches = [];
       if (!query) {
-        matches = allPartsDatabase.slice(0, 30);
+        // เมื่อไม่ได้พิมพ์อะไร ให้แสดง 60 รายการแรก เพื่อให้เลื่อนดูได้ลื่นไหล
+        matches = allPartsDatabase.slice(0, 60);
       } else {
         for (let i = 0; i < allPartsDatabase.length; i++) {
           const item = allPartsDatabase[i];
-          if (item.code.includes(query) || item.desc.toUpperCase().includes(query)) {
+          if (item.code.toUpperCase().includes(query) || (item.desc && item.desc.toUpperCase().includes(query))) {
             matches.push(item);
-            if (matches.length >= 35) break; // Keep DOM super fast
+            if (matches.length >= 80) break; // โหลดเร็ว ไม่หน่วงจอ
           }
         }
       }
 
       if (matches.length === 0) {
         dropdown.innerHTML = `
-          <div class="p-3 text-center text-xs text-slate-400">
-            ไม่พบรหัสอะไหล่ที่ค้นหา "${query}" ใน 20,000+ รายการ
+          <div class="p-4 text-center text-xs text-slate-400">
+            ไม่พบรหัสหรือชื่ออะไหล่ที่ตรงกับ "${query}"
           </div>
         `;
         return;
       }
 
-      dropdown.innerHTML = matches.map(item => `
-        <div onclick="selectPartItem('${item.code}', '${item.desc}')" class="p-3 hover:bg-carrier-50 active:bg-carrier-100 cursor-pointer transition-colors flex items-center justify-between">
-          <div>
+      dropdown.innerHTML = `
+        <div class="px-3 py-1.5 bg-slate-50 text-[11px] text-slate-500 font-medium flex justify-between">
+          <span>พบ ${matches.length} รายการ ${query ? `(จากผลการค้นหา)` : `(รายการแนะนำ)`}</span>
+          <span>ทั้งหมด ${allPartsDatabase.length.toLocaleString()} รายการ</span>
+        </div>
+      ` + matches.map(item => `
+        <div onclick="selectPartItem('${escapeQuotes(item.code)}', '${escapeQuotes(item.desc)}')" class="p-3 hover:bg-carrier-50 active:bg-carrier-100 cursor-pointer transition-colors flex items-center justify-between">
+          <div class="min-w-0 pr-2">
             <span class="font-mono font-bold text-sm text-carrier-900">${highlightMatch(item.code, query)}</span>
-            <p class="text-[11px] text-slate-500 truncate max-w-[240px]">${item.desc}</p>
+            <p class="text-[11px] text-slate-600 truncate max-w-[260px]">${item.desc}</p>
           </div>
-          <span class="text-[10px] text-carrier-600 bg-carrier-100 px-2 py-0.5 rounded font-mono">เลือก</span>
+          <span class="text-[10px] text-carrier-700 bg-carrier-100 hover:bg-carrier-200 px-2.5 py-1 rounded-lg font-mono shrink-0 font-semibold">เลือก</span>
         </div>
       `).join('');
     }
 
+    function escapeQuotes(str) {
+      if (!str) return '';
+      return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
     function highlightMatch(text, query) {
       if (!query) return text;
-      const idx = text.indexOf(query);
+      const idx = text.toUpperCase().indexOf(query.toUpperCase());
       if (idx === -1) return text;
-      return text.substring(0, idx) + '<mark class="bg-amber-200 text-slate-900 rounded px-0.5">' + query + '</mark>' + text.substring(idx + query.length);
+      return text.substring(0, idx) + '<mark class="bg-amber-200 text-slate-900 rounded px-0.5">' + text.substring(idx, idx + query.length) + '</mark>' + text.substring(idx + query.length);
     }
 
     function selectPartItem(code, desc) {
@@ -685,8 +574,23 @@
       badge.classList.remove('bg-carrier-100', 'text-carrier-700');
       badge.classList.add('bg-emerald-100', 'text-emerald-800');
 
+      // แสดงรายละเอียดในการ์ด
+      const detailsCard = document.getElementById('selectedPartDetailsCard');
+      const cardCode = document.getElementById('cardPartCodeDisplay');
+      const cardName = document.getElementById('cardPartNameDisplay');
+      const targetPartReview = document.getElementById('targetPartNameReview');
+      
+      if (detailsCard && cardCode && cardName) {
+        cardCode.innerText = code;
+        cardName.innerText = desc || 'ไม่มีชื่อระบุในชีต';
+        detailsCard.classList.remove('hidden');
+      }
+      if (targetPartReview) {
+        targetPartReview.innerText = desc || '-';
+      }
+
       updateFilenameDisplay();
-      showToast(`เลือกรหัสอะไหล่: ${code}`, 'info');
+      showToast(`เลือก: ${code}`, 'info');
     }
 
     function clearSelectedPart() {
@@ -700,6 +604,9 @@
       badge.innerText = 'ยังไม่ได้เลือก';
       badge.classList.remove('bg-emerald-100', 'text-emerald-800');
       badge.classList.add('bg-carrier-100', 'text-carrier-700');
+
+      const detailsCard = document.getElementById('selectedPartDetailsCard');
+      if (detailsCard) detailsCard.classList.add('hidden');
 
       updateFilenameDisplay();
     }
@@ -715,7 +622,6 @@
 
     function getStrictFilename() {
       const partCode = selectedPartNumber || 'UNKNOWN_PART';
-      // Strictly [PartNumber].[ext] as requested (e.g. 43T00933.jpg or 43T00933.png)
       return `${partCode}.${currentFileExtension}`;
     }
 
@@ -725,12 +631,11 @@
       const btnText = document.getElementById('uploadButtonText');
       if (targetElem) targetElem.innerText = filename;
       if (btnText && !isUploading) {
-        btnText.innerText = `อัปโหลด ${filename} ลง Google Drive`;
+        btnText.innerText = selectedPartNumber ? `อัปโหลด ${filename} ลง Google Drive` : `อัปโหลดไฟล์ [รหัสอะไหล่] ลง Google Drive`;
       }
     }
 
     async function processAndCompressImage(file) {
-      // 1. Strict Format Checking: only image/jpeg, image/png, image/jpg
       const originalName = file.name.toLowerCase();
       let determinedExt = 'jpg';
 
@@ -744,8 +649,6 @@
 
       currentFileExtension = determinedExt;
 
-      showToast(`ตรวจพบไฟล์รูป .${determinedExt.toUpperCase()} กำลังปรับขนาดให้ไม่เกิน 2MB...`, 'info');
-
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onerror = reject;
@@ -753,7 +656,6 @@
           const img = new Image();
           img.onerror = () => reject(new Error('ไม่สามารถอ่านไฟล์รูปภาพได้'));
           img.onload = () => {
-            // Resize max dimension to 1920px (Full HD clarity for Carrier Serial & Parts inspection)
             const maxDimension = 1920;
             let { width, height } = img;
 
@@ -775,14 +677,12 @@
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
 
-            // Compress strictly to < 2.0 MB
-            const MAX_ALLOWED_BYTES = 2.0 * 1024 * 1024; // 2MB
+            const MAX_ALLOWED_BYTES = 2.0 * 1024 * 1024;
             let mimeType = determinedExt === 'png' ? 'image/png' : 'image/jpeg';
             let quality = 0.88;
             let dataUrl = canvas.toDataURL(mimeType, quality);
             let estimatedBytes = dataUrl.length * (3 / 4);
 
-            // If PNG is over 2MB, compress as high-quality JPEG to satisfy strictly < 2MB requirement
             if (determinedExt === 'png' && estimatedBytes > MAX_ALLOWED_BYTES) {
               mimeType = 'image/jpeg';
               determinedExt = 'jpg';
@@ -822,7 +722,6 @@
         currentFileSizeMB = result.sizeMB;
         currentFileExtension = result.ext;
 
-        // Render preview & format badges
         const previewImg = document.getElementById('imagePreviewElement');
         previewImg.src = currentProcessedBase64;
         
@@ -841,68 +740,6 @@
         showToast('❌ ข้อผิดพลาด: ' + err.message, 'error');
         clearSelectedImage();
       }
-    }
-
-    function loadCarrierDemoImage() {
-      const canvas = document.createElement('canvas');
-      canvas.width = 1280;
-      canvas.height = 960;
-      const ctx = canvas.getContext('2d');
-
-      // Gradient background
-      const gradient = ctx.createLinearGradient(0, 0, 1280, 960);
-      gradient.addColorStop(0, '#001e47');
-      gradient.addColorStop(0.5, '#003876');
-      gradient.addColorStop(1, '#0054a6');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 1280, 960);
-
-      // Carrier Branding
-      ctx.fillStyle = '#0099da';
-      ctx.fillRect(50, 40, 320, 50);
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 24px Kanit, sans-serif';
-      ctx.fillText('CARRIER SPARE PARTS', 70, 75);
-
-      // Part Information
-      const partToDraw = selectedPartNumber || '43T00933';
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 48px Kanit, sans-serif';
-      ctx.fillText(`รหัสอะไหล่: ${partToDraw}`, 60, 180);
-
-      ctx.fillStyle = '#bae6fd';
-      ctx.font = '28px Kanit, sans-serif';
-      ctx.fillText(`• ชื่อชิ้นส่วน: ${selectedPartDescription || 'อะไหล่เครื่องปรับอากาศ Carrier'}`, 60, 240);
-      ctx.fillText(`• ผู้บันทึก: ${currentUser ? currentUser.name : 'ช่างประจำสาขา'}`, 60, 290);
-      ctx.fillText(`• บันทึกเวลา: ${new Date().toLocaleString('th-TH')}`, 60, 340);
-      ctx.fillText(`• รูปแบบไฟล์: .JPG (ขนาดผ่านเกณฑ์ < 2 MB)`, 60, 390);
-
-      // Technical blueprint outline
-      ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 3;
-      ctx.strokeRect(40, 40, 1200, 880);
-
-      // Circle target
-      ctx.beginPath();
-      ctx.arc(640, 650, 150, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-      ctx.fill();
-      ctx.strokeStyle = '#0099da';
-      ctx.stroke();
-
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 36px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText(partToDraw, 640, 660);
-      ctx.textAlign = 'start';
-
-      const demoUrl = canvas.toDataURL('image/jpeg', 0.88);
-      fetch(demoUrl)
-        .then(res => res.blob())
-        .then(blob => {
-          const demoFile = new File([blob], `${partToDraw}.jpg`, { type: 'image/jpeg' });
-          handleFileSelect({ target: { files: [demoFile] } });
-        });
     }
 
     function clearSelectedImage() {
@@ -927,14 +764,13 @@
       const uploadText = document.getElementById('uploadButtonText');
       const progressContainer = document.getElementById('uploadProgressContainer');
       const progressBar = document.getElementById('uploadProgressBar');
-      const progressStatus = document.getElementById('uploadProgressStatus');
       const progressPercent = document.getElementById('uploadProgressPercent');
 
       uploadBtn.disabled = true;
       uploadText.innerText = 'กำลังส่งภาพไปยัง Google Drive...';
       progressContainer.classList.remove('hidden');
-      progressBar.style.width = '20%';
-      progressPercent.innerText = '20%';
+      progressBar.style.width = '30%';
+      progressPercent.innerText = '30%';
 
       const uploaderName = currentUser ? currentUser.name : 'Unknown';
 
@@ -948,25 +784,8 @@
           progressBar.style.width = '100%';
           progressPercent.innerText = '100%';
           finishUpload(true, strictFileName, response.fileUrl || '#');
-        } else if (response && !response.success) {
-          finishUpload(false, strictFileName, null, response.error || 'ส่งข้อมูลล้มเหลว');
         } else {
-          // Simulation mode when no API URL configured
-          let progress = 30;
-          const interval = setInterval(() => {
-            progress += 25;
-            if (progress > 100) progress = 100;
-            progressBar.style.width = progress + '%';
-            progressPercent.innerText = progress + '%';
-
-            if (progress === 100) {
-              clearInterval(interval);
-              setTimeout(() => {
-                const mockUrl = `https://drive.google.com/file/d/mock_${selectedPartNumber}`;
-                finishUpload(true, strictFileName, mockUrl);
-              }, 300);
-            }
-          }, 120);
+          finishUpload(false, strictFileName, null, (response && response.error) || 'ส่งข้อมูลล้มเหลว');
         }
       }).catch((error) => {
         finishUpload(false, strictFileName, null, error.message || 'ส่งข้อมูลล้มเหลว');
@@ -984,210 +803,119 @@
 
       if (isSuccess) {
         showToast(`✅ บันทึก ${fileName} ลง Google Drive สำเร็จ!`, 'success');
-        
-        // Add to history
-        addHistoryItem({
-          partCode: selectedPartNumber,
-          fileName: fileName,
-          size: currentFileSizeMB + ' MB',
-          date: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
-          url: fileUrl
-        });
-
         clearSelectedImage();
+        fetchLogsFromGoogleSheet();
       } else {
         showToast('❌ อัปโหลดไม่สำเร็จ: ' + errorMsg, 'error');
       }
     }
 
-    function addHistoryItem(item) {
-      uploadHistory.unshift(item);
-      if (uploadHistory.length > 6) uploadHistory.pop();
-      renderHistoryList();
+    function fetchLogsFromGoogleSheet() {
+      const container = document.getElementById('uploadHistoryList');
+      container.innerHTML = `
+        <div class="text-center py-4 px-3 bg-white/70 border border-slate-200 rounded-2xl text-xs text-carrier-700 animate-pulse flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4 animate-spin text-carrier-600" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+          <span>กำลังดึงประวัติจากชีต Logs...</span>
+        </div>
+      `;
+
+      callBackend('getLogs')
+        .then((logs) => {
+          if (Array.isArray(logs) && logs.length > 0) {
+            uploadHistory = logs;
+            renderHistoryList();
+          } else {
+            uploadHistory = [];
+            container.innerHTML = `
+              <div class="text-center py-6 px-4 bg-white/70 border border-dashed border-slate-300 rounded-2xl">
+                <p class="text-xs text-slate-400">ยังไม่มีประวัติการบันทึกในชีต Logs</p>
+              </div>
+            `;
+          }
+        })
+        .catch((err) => {
+          console.error('Fetch logs error:', err);
+          container.innerHTML = `
+            <div class="text-center py-4 px-4 bg-white/70 border border-slate-200 rounded-2xl text-xs text-slate-500">
+              <p>ไม่สามารถดึงประวัติได้: ${err.message || 'ข้อผิดพลาดการเชื่อมต่อ'}</p>
+              <button onclick="fetchLogsFromGoogleSheet()" class="mt-2 text-carrier-600 underline font-semibold">ลองใหม่อีกครั้ง</button>
+            </div>
+          `;
+        });
     }
 
     function renderHistoryList() {
       const container = document.getElementById('uploadHistoryList');
-      const emptyNotice = document.getElementById('emptyHistoryNotice');
 
-      if (uploadHistory.length === 0) {
-        if (emptyNotice) emptyNotice.style.display = 'block';
+      if (!uploadHistory || uploadHistory.length === 0) {
         container.innerHTML = `
-          <div id="emptyHistoryNotice" class="text-center py-6 px-4 bg-white/70 border border-dashed border-slate-300 rounded-2xl">
-            <p class="text-xs text-slate-400">ยังไม่มีรายการที่อัปโหลดในรอบนี้</p>
+          <div class="text-center py-6 px-4 bg-white/70 border border-dashed border-slate-300 rounded-2xl">
+            <p class="text-xs text-slate-400">ยังไม่มีประวัติการบันทึกในชีต Logs</p>
           </div>
         `;
         return;
       }
 
       container.innerHTML = uploadHistory.map(item => `
-        <div class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between text-xs transition-all hover:border-carrier-300">
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between text-xs transition-all hover:border-carrier-300">
           <div class="truncate pr-2">
-            <p class="font-bold text-carrier-900 font-mono text-sm">${item.fileName}</p>
-            <p class="text-[11px] text-slate-400">ขนาด: ${item.size} • เวลา: ${item.date}</p>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-carrier-900 font-mono text-sm">${item.partCode}</span>
+              <span class="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.2 rounded-full">บันทึกแล้ว</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+              👤 ${item.uploader || '-'} • 🕒 ${item.dateTime || '-'}
+            </p>
           </div>
-          <span class="inline-flex items-center text-emerald-700 bg-emerald-50 px-2 py-1 rounded-lg font-semibold text-[11px] shrink-0 border border-emerald-200">
-            ✓ ส่งลง Drive แล้ว
+          <span class="inline-flex items-center text-carrier-700 bg-carrier-50 px-2.5 py-1 rounded-xl font-semibold text-[11px] shrink-0 border border-carrier-200">
+            ชีต Logs
           </span>
         </div>
       `).join('');
     }
 
-    function clearHistoryLog() {
-      uploadHistory = [];
-      renderHistoryList();
-      showToast('ล้างรายการประวัติแล้ว', 'info');
-    }
-
-    function syncPartsFromGoogleSheet() {
-      showToast('กำลังเชื่อมต่อดึงรายการอะไหล่จาก Google Sheets...', 'info');
+    function syncPartsFromGoogleSheet(isManual = false) {
+      const countBadge = document.getElementById('sheetCountBadge');
+      if (countBadge) {
+        countBadge.innerText = 'กำลังโหลดรายการอะไหล่จากชีต...';
+      }
+      if (isManual) {
+        showToast('กำลังเชื่อมต่อดึงรายการอะไหล่จาก Google Sheets...', 'info');
+      }
 
       callBackend('getParts')
         .then((partsArray) => {
           if (Array.isArray(partsArray) && partsArray.length > 0) {
             allPartsDatabase = partsArray;
-            document.getElementById('sheetCountBadge').innerText = `ฐานข้อมูลอะไหล่ Carrier: ${allPartsDatabase.length.toLocaleString()} รายการ`;
-            showToast(`ซิงก์สำเร็จ! ดึงรายการอะไหล่ ${allPartsDatabase.length.toLocaleString()} รายการ`, 'success');
+            if (countBadge) {
+              countBadge.innerText = `ฐานข้อมูลอะไหล่ Carrier: ${allPartsDatabase.length.toLocaleString()} รายการ`;
+            }
+            if (isManual) {
+              showToast(`โหลดสำเร็จ! พบอะไหล่ทั้งหมด ${allPartsDatabase.length.toLocaleString()} รายการ`, 'success');
+            }
+            // รีเฟรชลิสต์ถ้าเปิดค้างไว้
+            const input = document.getElementById('partSearchInput');
+            if (input && input.value) {
+              renderFilteredPartsDropdown(input.value.trim().toUpperCase());
+            }
           } else {
-            showToast(`ใช้งานฐานข้อมูลอะไหล่ปัจจุบัน ${allPartsDatabase.length.toLocaleString()} รายการ`, 'info');
+            if (countBadge) {
+              countBadge.innerText = 'ไม่พบข้อมูลในชีต Parts';
+            }
+            if (isManual) {
+              showToast('ไม่พบรายการในชีต Parts หรือชีตว่างเปล่า', 'error');
+            }
           }
         })
         .catch((err) => {
-          showToast('เกิดข้อผิดพลาดในการดึง Sheet: ' + err.message, 'error');
+          console.error('getParts error:', err);
+          if (countBadge) {
+            countBadge.innerText = 'เชื่อมต่อดึงอะไหล่ไม่สำเร็จ';
+          }
+          if (isManual) {
+            showToast('เกิดข้อผิดพลาดในการดึง Sheet: ' + err.message, 'error');
+          }
         });
-    }
-
-    function toggleScriptModal(show) {
-      const modal = document.getElementById('scriptModal');
-      if (show) modal.classList.remove('hidden');
-      else modal.classList.add('hidden');
-    }
-
-    function renderScriptCodeTemplate() {
-      const folderId = localStorage.getItem('carrier_drive_folder_id') || 'ใส่_GOOGLE_DRIVE_FOLDER_ID_ที่นี่';
-      const code = `// ==========================================
-// Google Apps Script (Code.gs)
-// ระบบถ่ายภาพอะไหล่ Carrier บันทึกลง Google Drive & Google Sheet
-// ==========================================
-
-const DRIVE_FOLDER_ID = "${folderId}"; 
-
-function doGet() {
-  return HtmlService.createHtmlOutputFromFile('Index')
-    .setTitle('Carrier Spare Parts Uploader')
-    .addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
-}
-
-// 1. ตรวจสอบการ Login จากแท็บ "Users"
-function authenticateUser(username, password) {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName('Users');
-  if (!sheet) return { success: false, error: 'ไม่พบชีต Users' };
-
-  const data = sheet.getDataRange().getValues();
-  for (let i = 1; i < data.length; i++) {
-    const [u, p, name] = data[i];
-    if (String(u).trim().toLowerCase() === String(username).trim().toLowerCase() && String(p).trim() === String(password).trim()) {
-      return { success: true, name: name || u };
-    }
-  }
-  return { success: false };
-}
-
-// 2. ดึงรหัสอะไหล่จากแท็บ "Parts" เฉพาะ Column A (รองรับ 20,000+ รายการ)
-function getPartsFromSheet() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName('Parts');
-  if (!sheet) return [];
-
-  const lastRow = sheet.getLastRow();
-  if (lastRow <= 1) return [];
-
-  // ดึงเฉพาะ Column A ตั้งแต่แถวที่ 2 จนถึงแถวสุดท้าย (ความเร็วสูง)
-  const rangeValues = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
-  const parts = [];
-  for (let i = 0; i < rangeValues.length; i++) {
-    const code = String(rangeValues[i][0]).trim();
-    if (code) {
-      parts.push({ code: code, desc: 'รหัสอะไหล่ Carrier ' + code });
-    }
-  }
-  return parts;
-}
-
-// 3. รับภาพ บันทึกลง Drive และบันทึก Log ลงแท็บ "Logs"
-// ประกอบด้วย: วันเวลา | รายชื่อดรอปลิส | คนที่บันทึก
-function uploadFileToDrive(base64Data, fileName, partNumber, uploaderName) {
-  try {
-    const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
-    const splitData = base64Data.split(',');
-    const contentType = splitData[0].match(/:(.*?);/)[1];
-    const bytes = Utilities.base64Decode(splitData[1]);
-    const blob = Utilities.newBlob(bytes, contentType, fileName);
-    
-    // บันทึกรูปภาพลง Google Drive โดยชื่อไฟล์คือ [รหัสอะไหล่].[jpg|png]
-    const file = folder.createFile(blob);
-    const fileUrl = file.getUrl();
-
-    // บันทึกลง Sheet "Logs"
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    let logSheet = ss.getSheetByName('Logs');
-    if (!logSheet) {
-      logSheet = ss.insertSheet('Logs');
-      // หัวตาราง 3 คอลัมน์ตามที่ระบุ
-      logSheet.appendRow(['วันเวลา', 'รายชื่อดรอปลิส', 'คนที่บันทึก']);
-    }
-
-    // จัดฟอร์แมตวันเวลาเป็น วัน/เดือน/ปี ชั่วโมง:นาที:วินาที
-    const thaiDateTime = Utilities.formatDate(new Date(), 'Asia/Bangkok', 'dd/MM/yyyy HH:mm:ss');
-
-    // บันทึก 3 ค่า: [วันเวลา, รายชื่อดรอปลิส, คนที่บันทึก]
-    logSheet.appendRow([thaiDateTime, partNumber, uploaderName]);
-
-    return { success: true, fileUrl: fileUrl };
-  } catch (err) {
-    return { success: false, error: err.toString() };
-  }
-}`;
-      document.getElementById('appsScriptCodeBlock').innerText = code;
-    }
-
-    function copyAppsScriptCode() {
-      const code = document.getElementById('appsScriptCodeBlock').innerText;
-      const textarea = document.createElement('textarea');
-      textarea.value = code;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      showToast('คัดลอกโค้ด Code.gs เรียบร้อยแล้ว', 'success');
-    }
-
-    function saveDriveConfigSettings() {
-      const folderId = document.getElementById('configDriveFolderId').value.trim();
-      const apiUrl = document.getElementById('configGasApiUrl').value.trim();
-
-      if (folderId) {
-        localStorage.setItem('carrier_drive_folder_id', folderId);
-      }
-      if (apiUrl) {
-        localStorage.setItem('carrier_gas_api_url', apiUrl);
-        updateApiStatusIndicator();
-      }
-      renderScriptCodeTemplate();
-      showToast('บันทึกการตั้งค่าเรียบร้อย', 'success');
-      toggleScriptModal(false);
-    }
-
-    function loadStoredSettings() {
-      const storedFolderId = localStorage.getItem('carrier_drive_folder_id');
-      const storedApiUrl = localStorage.getItem('carrier_gas_api_url');
-      if (storedFolderId) {
-        document.getElementById('configDriveFolderId').value = storedFolderId;
-      }
-      if (storedApiUrl) {
-        document.getElementById('configGasApiUrl').value = storedApiUrl;
-      }
     }
 
     function showToast(message, type = 'info') {
